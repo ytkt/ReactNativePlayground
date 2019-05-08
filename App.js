@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, View } from 'react-native';
+import { Alert, ScrollView, Image, Text, View } from 'react-native';
 
 export default class App extends Component {
   _onPressButton() {
@@ -8,16 +8,18 @@ export default class App extends Component {
 
   render() {
     return (
-        <View style={{
-          padding: 10,
-          flex: 1,
-          justifyContent: 'center',
-        }}>
-        <Button
-          onPress={this._onPressButton}
-          title="Press me"
-        />
-        </View>
+        <ScrollView horizontal={false} bounces={true}>
+        <Text style={{fontSize: 96}}>Scroll me plz</Text>
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Image source={{uri: "https://facebook.github.io/react-native/img/favicon.png", width: 64, height: 64}} />
+        <Text style={{fontSize: 96}}>end of ScrollView</Text>
+        </ScrollView>
     );
   }
 }
