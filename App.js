@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
   render() {
     return (
-        <View style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'stretch',
-        }}>
-        <View style={{width: 100, height: 100, backgroundColor: 'powderblue'}} />
-        <View style={{height: 100, backgroundColor: 'skyblue'}} />
-        <View style={{height: 200, backgroundColor: 'steelblue'}} />
+        <View style={{padding: 10}}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Type here to translate!"
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text style={{padding: 10, fontSize: 42}}>
+        {this.state.text.split(' ').map((word) => word && '🍕 ').join(' ')}
+        </Text>
         </View>
     );
   }
