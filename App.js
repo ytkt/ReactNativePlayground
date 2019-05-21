@@ -1,37 +1,21 @@
-import React, { Component } from 'react';
-import { Alert, StyleSheet, FlatList, Image, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+import DetailsScreen from './DetailsScreen';
+import HomeScreen from './HomeScreen';
 
-export default class App extends Component {
+
+const AppNavigator = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen
+}, {
+  initialRouteName: "Home"
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
   render() {
-    return (
-        <View style={styles.container}>
-  <FlatList
-          data={[
-            {key: 'hoge'},
-            {key: 'fuga'},
-            {key: 'piyo'},
-            {key: 'hogehoge'},
-            {key: 'fugafuga'},
-            {key: 'piyopiyo'},
-            {key: 'hogehogehoge'},
-            {key: 'fugafugafuga'},
-            {key: 'piyopiyopiyo'},
-          ]}
-      renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-        />
-        </View>
-    );
+    return <AppContainer />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  item: {
-    padding: 10,
-    fontSize: 36,
-    height: 88,
-  },
-})
