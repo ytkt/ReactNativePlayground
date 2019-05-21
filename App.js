@@ -1,37 +1,51 @@
-import React, { Component } from 'react';
-import { Alert, StyleSheet, FlatList, Image, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-export default class App extends Component {
+class HomeScreen extends React.Component {
   render() {
     return (
-        <View style={styles.container}>
-  <FlatList
-          data={[
-            {key: 'hoge'},
-            {key: 'fuga'},
-            {key: 'piyo'},
-            {key: 'hogehoge'},
-            {key: 'fugafuga'},
-            {key: 'piyopiyo'},
-            {key: 'hogehogehoge'},
-            {key: 'fugafugafuga'},
-            {key: 'piyopiyopiyo'},
-          ]}
-      renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+        <View style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center"
+        }}>
+        <Text>Home Screen</Text>
+        <Button
+      title="go to Details"
+      onPress={() => this.props.navigation.navigate('Details')}
         />
-        </View>
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22
-  },
-  item: {
-    padding: 10,
-    fontSize: 36,
-    height: 88,
-  },
-})
+
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+        <View style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center"
+        }}>
+      <Text>Detail Screen</Text>
+      </View>
+    );
+  }
+}
+
+const AppNavigator = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen
+}, {
+  initialRouteName: "Home"
+});
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
