@@ -1,39 +1,9 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
+import DetailsScreen from './DetailsScreen';
+import HomeScreen from './HomeScreen';
 
-class HomeScreen extends React.Component {
-  render() {
-    return (
-        <View style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center"
-        }}>
-        <Text>Home Screen</Text>
-        <Button
-      title="go to Details"
-      onPress={() => this.props.navigation.navigate('Details')}
-        />
-      </View>
-    );
-  }
-}
-
-
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-        <View style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center"
-        }}>
-      <Text>Detail Screen</Text>
-      </View>
-    );
-  }
-}
 
 const AppNavigator = createStackNavigator({
   Home: HomeScreen,
